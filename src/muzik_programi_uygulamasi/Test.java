@@ -108,7 +108,7 @@ public class Test {
 		// 1. İşlem
 		/*
 		 * sanatci1.sanatciBilgileri(); sanatci2.sanatciBilgileri();
-		 *s sanatci3.sanatciBilgileri();
+		 *saa sanatci3.sanatciBilgileri();
 		 * System.out.print("Aradığınız sanatçının adını giriniz: "); String
 		 * ad=arama.nextLine(); i.sanatciAramasi(ad);
 		 */

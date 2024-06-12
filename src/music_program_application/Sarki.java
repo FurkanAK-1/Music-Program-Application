@@ -3,7 +3,7 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
 public class Sarki extends Sanatci {
 

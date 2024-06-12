@@ -3,9 +3,9 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
-public class Calma_Listesi {
+public class Playlist {
 
 	private String ad;
 	private Kullanici kullanici;
@@ -14,7 +14,7 @@ public class Calma_Listesi {
 	private Kullanici[] takipcilistesi;
 	private int takipciSayisi;
 
-	public Calma_Listesi(String ad, Kullanici kullanici) {
+	public Playlist(String ad, Kullanici kullanici) {
 		this.ad = ad;
 		this.kullanici = kullanici;
 		sarkilistesi = new Sarki[100];

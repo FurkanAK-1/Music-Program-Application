@@ -3,7 +3,7 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
 public class Kullanici {
 
@@ -11,8 +11,8 @@ public class Kullanici {
 
 	private Sarki[] begeniListesi;
 	private Sanatci[] sanatcitakiplistesi;
-	private Calma_Listesi[] calmalistesi;
-	private Calma_Listesi[] calmalisttakiplistesi;
+	private Playlist[] calmalistesi;
+	private Playlist[] calmalisttakiplistesi;
 	private Sarki[] sarkilistesi;
 	private Sanatci sanatci;
 	private Album album;
@@ -22,11 +22,11 @@ public class Kullanici {
 	private int[] dinlenmesayisi;
 	private int count;
 
-	public Kullanici(String adSoyad, Istatistik istatistik, Uyelik_Turu uyelik_turu) {
+	public Kullanici(String adSoyad, Statistics istatistik, Uyelik_Turu uyelik_turu) {
 		this.adSoyad = adSoyad;
 
-		calmalistesi = new Calma_Listesi[100];
-		calmalisttakiplistesi = new Calma_Listesi[100];
+		calmalistesi = new Playlist[100];
+		calmalisttakiplistesi = new Playlist[100];
 		sarkilistesi = new Sarki[100];
 		sanatcitakiplistesi = new Sanatci[100];
 		begeniListesi = new Sarki[100];
@@ -57,11 +57,11 @@ public class Kullanici {
 		this.adSoyad = adSoyad;
 	}
 
-	public Calma_Listesi[] getCalmalisttakiplistesi() {
+	public Playlist[] getCalmalisttakiplistesi() {
 		return calmalisttakiplistesi;
 	}
 
-	public void setCalmalisttakiplistesi(Calma_Listesi[] calmalisttakiplistesi) {
+	public void setCalmalisttakiplistesi(Playlist[] calmalisttakiplistesi) {
 		this.calmalisttakiplistesi = calmalisttakiplistesi;
 	}
 
@@ -89,11 +89,11 @@ public class Kullanici {
 		this.sanatcitakiplistesi = sanatcitakiplistesi;
 	}
 
-	public Calma_Listesi[] getCalmalistesi() {
+	public Playlist[] getCalmalistesi() {
 		return calmalistesi;
 	}
 
-	public void setCalmalistesi(Calma_Listesi[] calmalistesi) {
+	public void setCalmalistesi(Playlist[] calmalistesi) {
 		this.calmalistesi = calmalistesi;
 	}
 
@@ -145,7 +145,7 @@ public class Kullanici {
 		this.dinlenmesayisi = dinlenmesayisi;
 	}
 
-	public void sarkiEkle(Calma_Listesi calmalistesi, Sarki sarki, Istatistik istatistik) {
+	public void sarkiEkle(Playlist calmalistesi, Sarki sarki, Statistics istatistik) {
 
 		if (uyelik_turu instanceof Premium) {
 			boolean kullanici_ekle = istatistik.kullaniciEkle(this);
@@ -216,7 +216,7 @@ public class Kullanici {
 		}
 	}
 
-	public void sarkiSil(Calma_Listesi calmalistesi, Sarki sarki, Istatistik istatistik) {
+	public void sarkiSil(Playlist calmalistesi, Sarki sarki, Statistics istatistik) {
 
 		boolean is_added = false;
 		boolean calma_kontrol = calmalistesi.kullaniciKontrol(this);
@@ -289,7 +289,7 @@ public class Kullanici {
 
 	}
 
-	public boolean calmafarkliMi(Calma_Listesi cl) {
+	public boolean calmafarkliMi(Playlist cl) {
 		for (int i = 0; i < calmalistesi.length; i++) {
 			if (calmalistesi[i] == cl) {
 				return true;
@@ -343,7 +343,7 @@ public class Kullanici {
 
 	}
 
-	public void calma_lTakipEt(Calma_Listesi calmalist) {
+	public void calma_lTakipEt(Playlist calmalist) {
 
 		boolean is_added = false;
 		boolean begeni_added = calmalist.takipEt(this);
@@ -387,8 +387,8 @@ public class Kullanici {
 
 	}
 
-	public void calmalistGuncelle(Calma_Listesi calmalist, Sarki silinecek, Sarki guncellenecek,
-			Istatistik istatistik) {
+	public void calmalistGuncelle(Playlist calmalist, Sarki silinecek, Sarki guncellenecek,
+			Statistics istatistik) {
 
 		boolean is_added = false;
 		boolean calma_kontrol = calmalist.kullaniciKontrol(this);

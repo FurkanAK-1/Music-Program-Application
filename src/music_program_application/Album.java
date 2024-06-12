@@ -3,7 +3,7 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
 public class Album extends Sarki {
 
@@ -113,7 +113,7 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public void sarkiEkle(Sarki sarki, Istatistik istatistik) {
+	public void sarkiEkle(Sarki sarki, Statistics istatistik) {
 
 		boolean is_added = false;
 		boolean albumsarki_farklimi = farkliMi(sarki);
@@ -161,7 +161,7 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public void sarkiSil(Sarki sarki, Istatistik istatistik) {
+	public void sarkiSil(Sarki sarki, Statistics istatistik) {
 
 		boolean is_added = false;
 		boolean sarki_sil = sarki.albumSil(this);
@@ -229,7 +229,7 @@ public class Album extends Sarki {
 
 	}
 
-	public void albumGuncelle(Sarki silinecek, Sarki guncellenecek, Istatistik istatistik) {
+	public void albumGuncelle(Sarki silinecek, Sarki guncellenecek, Statistics istatistik) {
 
 		boolean is_added = false;
 

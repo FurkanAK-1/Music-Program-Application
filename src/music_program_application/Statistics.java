@@ -3,21 +3,21 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
-public class Istatistik {
+public class Statistics {
 
 	private Sanatci[] sanatciList;
 	private Sarki[] sarkiList;
 	private Album[] albumList;
-	private Calma_Listesi[] calmalistesi;
+	private Playlist[] calmalistesi;
 	private Kullanici[] kullanicilistesi;
 
-	public Istatistik() {
+	public Statistics() {
 		sanatciList = new Sanatci[100];
 		sarkiList = new Sarki[100];
 		albumList = new Album[100];
-		calmalistesi = new Calma_Listesi[100];
+		calmalistesi = new Playlist[100];
 		kullanicilistesi = new Kullanici[100];
 	}
 
@@ -45,11 +45,11 @@ public class Istatistik {
 		this.albumList = albumList;
 	}
 
-	public Calma_Listesi[] getCalmalistesi() {
+	public Playlist[] getCalmalistesi() {
 		return calmalistesi;
 	}
 
-	public void setCalmalistesi(Calma_Listesi[] calmalistesi) {
+	public void setCalmalistesi(Playlist[] calmalistesi) {
 		this.calmalistesi = calmalistesi;
 	}
 
@@ -113,7 +113,7 @@ public class Istatistik {
 		return false;
 	}
 
-	public boolean calmalistEkle(Calma_Listesi calmalist) {
+	public boolean calmalistEkle(Playlist calmalist) {
 		boolean is_added = false;
 
 		if (!farkliMi(calmalist)) {
@@ -129,7 +129,7 @@ public class Istatistik {
 		return is_added;
 	}
 
-	public boolean farkliMi(Calma_Listesi cl) {
+	public boolean farkliMi(Playlist cl) {
 		for (int i = 0; i < sanatciList.length; i++) {
 			if (calmalistesi[i] == cl) {
 				return true;
@@ -241,7 +241,7 @@ public class Istatistik {
 		return is_added;
 	}
 
-	public boolean calmalistSil(Calma_Listesi calmalist) {
+	public boolean calmalistSil(Playlist calmalist) {
 		boolean is_added = false;
 
 		if (farkliMi(calmalist)) {

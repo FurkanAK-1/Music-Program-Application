@@ -3,7 +3,7 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Test {
 		Uyelik_Turu n = new Uyelik_Turu();
 		Uyelik_Turu p = new Premium();
 
-		Istatistik i = new Istatistik();
+		Statistics i = new Statistics();
 
 		Kullanici kullanici1 = new Kullanici("Furkan AK", i, p);
 		Kullanici kullanici2 = new Kullanici("İbrahim Kurban", i, n);
@@ -37,12 +37,12 @@ public class Test {
 		Album album2 = new Album("Walkerverse", sanatci2);
 		Album album3 = new Album("Good Kid", sanatci3);
 
-		Calma_Listesi c_listesik1_1 = new Calma_Listesi("Rap Listesi", kullanici1);
-		Calma_Listesi c_listesik1_2 = new Calma_Listesi("Türkçe Rock", kullanici1);
-		Calma_Listesi c_listesik1_3 = new Calma_Listesi("Elektro", kullanici1);
-		Calma_Listesi c_listesik2_1 = new Calma_Listesi("Rap ve Rock", kullanici2);
-		Calma_Listesi c_listesik2_2 = new Calma_Listesi("Rock ve Elektro", kullanici2);
-		Calma_Listesi c_listesik2_3 = new Calma_Listesi("Elektro ve Rap", kullanici2);
+		Playlist c_listesik1_1 = new Playlist("Rap Listesi", kullanici1);
+		Playlist c_listesik1_2 = new Playlist("Türkçe Rock", kullanici1);
+		Playlist c_listesik1_3 = new Playlist("Elektro", kullanici1);
+		Playlist c_listesik2_1 = new Playlist("Rap ve Rock", kullanici2);
+		Playlist c_listesik2_2 = new Playlist("Rock ve Elektro", kullanici2);
+		Playlist c_listesik2_3 = new Playlist("Elektro ve Rap", kullanici2);
 
 		sanatci1.sarkiEkle(sarki1, i);
 		sanatci1.sarkiEkle(sarki2, i);

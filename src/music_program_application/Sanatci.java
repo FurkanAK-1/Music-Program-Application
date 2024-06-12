@@ -3,7 +3,7 @@
  * @author Furkan AK @Kowachka
  */
 
-package muzik_programi_uygulamasi;
+package music_program_application;
 
 public class Sanatci {
 
@@ -14,13 +14,13 @@ public class Sanatci {
 
 	private Kullanici[] takipcilistesi;
 	private Sarki[] sarkilistesi;
-	private Istatistik[] istatistik;
+	private Statistics[] istatistik;
 
 	public Sanatci(String adSoyad) {
 
 		this.adSoyad = adSoyad;
 
-		istatistik = new Istatistik[100];
+		istatistik = new Statistics[100];
 		sarkilistesi = new Sarki[100];
 		takipcilistesi = new Kullanici[100];
 
@@ -70,15 +70,15 @@ public class Sanatci {
 		this.sarkilistesi = sarkilistesi;
 	}
 
-	public Istatistik[] getIstatistik() {
+	public Statistics[] getIstatistik() {
 		return istatistik;
 	}
 
-	public void setIstatistik(Istatistik[] istatistik) {
+	public void setIstatistik(Statistics[] istatistik) {
 		this.istatistik = istatistik;
 	}
 
-	public void sarkiEkle(Sarki sarki, Istatistik istatistik) {
+	public void sarkiEkle(Sarki sarki, Statistics istatistik) {
 
 		boolean is_added = false;
 		boolean sarki_farklimi = farkliMi(sarki);
@@ -133,7 +133,7 @@ public class Sanatci {
 
 	}
 
-	public void sanatciSil(Istatistik istatistik) {
+	public void sanatciSil(Statistics istatistik) {
 		this.adSoyad = null;
 		boolean istatistik_sil = istatistik.sanatciSil(this);
 
@@ -149,7 +149,7 @@ public class Sanatci {
 		}
 	}
 
-	public void sarkiSil(Sarki sarki, Istatistik istatistik) {
+	public void sarkiSil(Sarki sarki, Statistics istatistik) {
 
 		boolean is_added = false;
 		boolean sarki_sil = sarki.sanatciSil(this);
@@ -176,7 +176,7 @@ public class Sanatci {
 
 	}
 
-	public void sarkiGuncelle(Sarki silinecek, Sarki guncellenecek, Istatistik istatistik) {
+	public void sarkiGuncelle(Sarki silinecek, Sarki guncellenecek, Statistics istatistik) {
 
 		boolean is_added = false;
 
@@ -198,7 +198,7 @@ public class Sanatci {
 		}
 	}
 
-	public void albumSil(Album album, Istatistik istatistik) {
+	public void albumSil(Album album, Statistics istatistik) {
 		boolean istatistik_sil = istatistik.albumSil(album);
 		boolean istatistikalbm_sil = album.albumsil(this);
 		this.albumSayisi--;

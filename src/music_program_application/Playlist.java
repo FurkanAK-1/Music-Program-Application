@@ -7,78 +7,78 @@ package music_program_application;
 
 public class Playlist {
 
-	private String ad;
-	private Kullanici kullanici;
-	private Sarki[] sarkilistesi;
-	private int dinlemesayisi;
-	private Kullanici[] takipcilistesi;
-	private int takipciSayisi;
+	private String name;
+	private User user;
+	private Song[] songList;
+	private int numberofListens;
+	private User[] followerlist;
+	private int numberofFollowers;
 
-	public Playlist(String ad, Kullanici kullanici) {
-		this.ad = ad;
-		this.kullanici = kullanici;
-		sarkilistesi = new Sarki[100];
-		takipcilistesi = new Kullanici[100];
+	public Playlist(String name, User user) {
+		this.name = name;
+		this.user = user;
+		songList = new Song[100];
+		followerlist = new User[100];
 
 	}
 
-	public String getAd() {
-		return ad;
+	public String getName() {
+		return name;
 	}
 
-	public void setAd(String ad) {
-		this.ad = ad;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Kullanici getKullanici() {
-		return kullanici;
+	public User getUser() {
+		return user;
 	}
 
-	public void setKullanici(Kullanici kullanici) {
-		this.kullanici = kullanici;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Sarki[] getSarkilistesi() {
-		return sarkilistesi;
+	public Song[] getSonglist() {
+		return songList;
 	}
 
-	public void setSarkilistesi(Sarki[] sarkilistesi) {
-		this.sarkilistesi = sarkilistesi;
+	public void setSongList(Song[] songList) {
+		this.songList = songList;
 	}
 
-	public int getDinlemesayisi() {
-		return dinlemesayisi;
+	public int getListeningNumber() {
+		return numberofListens;
 	}
 
-	public void setDinlemesayisi(int dinlemesayisi) {
-		this.dinlemesayisi = dinlemesayisi;
+	public void setListeningNumber(int numberofListens) {
+		this.numberofListens = numberofListens;
 	}
 
-	public Kullanici[] getTakipcilistesi() {
-		return takipcilistesi;
+	public User[] getFollowersList() {
+		return followerlist;
 	}
 
-	public void setTakipcilistesi(Kullanici[] takipcilistesi) {
-		this.takipcilistesi = takipcilistesi;
+	public void setFollowersList(User[] followerList) {
+		this.followerlist = followerList;
 	}
 
-	public int getTakipciSayisi() {
-		return takipciSayisi;
+	public int getFollowerCount() {
+		return numberofFollowers;
 	}
 
-	public void setTakipciSayisi(int takipciSayisi) {
-		this.takipciSayisi = takipciSayisi;
+	public void setFollowerCount(int numberofFollowers) {
+		this.numberofFollowers = numberofFollowers;
 	}
 
-	public boolean sarkiEkle(Kullanici kullanici, Sarki sarki) {
-		if (kullanici.getUyelik_turu() instanceof Premium) {
+	public boolean songAdd(User user, Song song) {
+		if (user.getMembership_type() instanceof Premium) {
 			boolean is_added = false;
 
-			if (!sarkiFarkliMi(sarki) && kullaniciKontrol(kullanici) && kullanici.getCount() < 8) {
-				for (int i = 0; i < sarkilistesi.length; i++) {
-					if (sarkilistesi[i] == null) {
-						sarkilistesi[i] = sarki;
-						this.kullanici = kullanici;
+			if (!songIsItDifferent(song) && userControl(user) && user.getCount() < 8) {
+				for (int i = 0; i < songList.length; i++) {
+					if (songList[i] == null) {
+						songList[i] = song;
+						this.user = user;
 						is_added = true;
 						break;
 					}
@@ -88,11 +88,11 @@ public class Playlist {
 			return is_added;
 		} else {
 			boolean is_added = false;
-			if (!sarkiFarkliMi(sarki) && kullaniciKontrol(kullanici) && kullanici.getCount() < 4) {
-				for (int i = 0; i < sarkilistesi.length; i++) {
-					if (sarkilistesi[i] == null) {
-						sarkilistesi[i] = sarki;
-						this.kullanici = kullanici;
+			if (!songIsItDifferent(song) && userControl(user) && user.getCount() < 4) {
+				for (int i = 0; i < songList.length; i++) {
+					if (songList[i] == null) {
+						songList[i] = song;
+						this.user = user;
 						is_added = true;
 
 						break;
@@ -106,10 +106,10 @@ public class Playlist {
 
 	}
 
-	public boolean kullaniciKontrol(Kullanici kullanici) {
+	public boolean userControl(User user) {
 		boolean is_added = false;
 
-		if (kullanici == this.kullanici) {
+		if (user == this.user) {
 			is_added = true;
 
 		}
@@ -117,9 +117,9 @@ public class Playlist {
 		return is_added;
 	}
 
-	public boolean sarkiFarkliMi(Sarki sn) {
-		for (int i = 0; i < sarkilistesi.length; i++) {
-			if (sarkilistesi[i] == sn) {
+	public boolean songIsItDifferent(Song sn) {
+		for (int i = 0; i < songList.length; i++) {
+			if (songList[i] == sn) {
 				return true;
 			}
 		}
@@ -128,17 +128,17 @@ public class Playlist {
 
 	}
 
-	public boolean sarkiSil(Kullanici kullanici, Sarki sarki) {
-		if (kullanici.getUyelik_turu() instanceof Premium) {
+	public boolean songDelete(User user, Song song) {
+		if (user.getMembership_type() instanceof Premium) {
 
 			boolean is_added = false;
 
-			if (sarkiFarkliMi(sarki) && kullaniciKontrol(kullanici)) {
-				for (int i = 0; i < sarkilistesi.length; i++) {
-					if (sarkilistesi[i] == sarki) {
-						int count = kullanici.getCount() - 1;
-						kullanici.setCount(count);
-						sarkilistesi[i] = null;
+			if (songIsItDifferent(song) && userControl(user)) {
+				for (int i = 0; i < songList.length; i++) {
+					if (songList[i] == song) {
+						int count = user.getCount() - 1;
+						user.setCount(count);
+						songList[i] = null;
 						is_added = true;
 						break;
 					}
@@ -151,12 +151,12 @@ public class Playlist {
 		} else {
 			boolean is_added = false;
 
-			if (sarkiFarkliMi(sarki) && kullaniciKontrol(kullanici)) {
-				for (int i = 0; i < sarkilistesi.length; i++) {
-					if (sarkilistesi[i] == sarki) {
-						int count = kullanici.getCount() - 1;
-						kullanici.setCount(count);
-						sarkilistesi[i] = null;
+			if (songIsItDifferent(song) && userControl(user)) {
+				for (int i = 0; i < songList.length; i++) {
+					if (songList[i] == song) {
+						int count = user.getCount() - 1;
+						user.setCount(count);
+						songList[i] = null;
 						is_added = true;
 						break;
 					}
@@ -168,14 +168,14 @@ public class Playlist {
 		}
 	}
 
-	public boolean takipEt(Kullanici kullanici) {
+	public boolean follow(User user) {
 		boolean is_added = false;
 
-		if (!farkliMi(kullanici)) {
-			for (int i = 0; i < takipcilistesi.length; i++) {
-				if (takipcilistesi[i] == null) {
-					takipciSayisi++;
-					takipcilistesi[i] = kullanici;
+		if (!isitDifferent(user)) {
+			for (int i = 0; i < followerlist.length; i++) {
+				if (followerlist[i] == null) {
+					numberofFollowers++;
+					followerlist[i] = user;
 					is_added = true;
 
 					break;
@@ -187,9 +187,9 @@ public class Playlist {
 		return is_added;
 	}
 
-	public boolean farkliMi(Kullanici kn) {
-		for (int i = 0; i < takipcilistesi.length; i++) {
-			if (takipcilistesi[i] == kn) {
+	public boolean isitDifferent(User kn) {
+		for (int i = 0; i < followerlist.length; i++) {
+			if (followerlist[i] == kn) {
 				return true;
 			}
 		}
@@ -198,26 +198,26 @@ public class Playlist {
 
 	}
 
-	public void takipListele() {
+	public void followList() {
 
-		for (int i = 0; i < takipcilistesi.length; i++) {
-			if (takipcilistesi[i] != null) {
-				System.out.print(takipcilistesi[i].getAdSoyad() + " ");
+		for (int i = 0; i < followerlist.length; i++) {
+			if (followerlist[i] != null) {
+				System.out.print(followerlist[i].getNameSurname() + " ");
 			}
 
 		}
 		System.out.println();
 	}
 
-	public void calmasarkiListele() {
+	public void playlistsongList() {
 
-		System.out.print(getAd() + " Çalma listesindeki şarkıların bilgileri: ");
+		System.out.print(getName() + " Information about the songs in the playlist: ");
 
-		for (int i = 0; i < sarkilistesi.length; i++) {
+		for (int i = 0; i < songList.length; i++) {
 
-			if (sarkilistesi[i] != null) {
+			if (songList[i] != null) {
 
-				System.out.print(sarkilistesi[i].getAd() + " ");
+				System.out.print(songList[i].getName() + " ");
 
 			}
 
@@ -227,12 +227,12 @@ public class Playlist {
 
 	}
 
-	public void calmalistesiBilgileri() {
+	public void playlistInformation() {
 
-		calmasarkiListele();
-		System.out.println("Takipçi Sayısı: " + getTakipciSayisi());
-		System.out.println("Çalma listesini takip edenlerin listesi: ");
-		takipListele();
+		playlistsongList();
+		System.out.println("Number of Followers: " + getFollowerCount());
+		System.out.println("List of playlist followers:");
+		followList();
 		System.out
 				.println("------------------------------------------------------------------------------------------");
 

@@ -10,198 +10,188 @@ import java.util.Scanner;
 public class Test {
 
 	public static void main(String[] args) {
-		Scanner arama = new Scanner(System.in);
-		Uyelik_Turu n = new Uyelik_Turu();
-		Uyelik_Turu p = new Premium();
+		Scanner search = new Scanner(System.in);
+		MembershipType n = new MembershipType();
+		MembershipType p = new Premium();
 
 		Statistics i = new Statistics();
 
-		Kullanici kullanici1 = new Kullanici("Furkan AK", i, p);
-		Kullanici kullanici2 = new Kullanici("İbrahim Kurban", i, n);
+		User user1 = new User("Furkan AK", i, p);
+		User user2 = new User("İbrahim Kurban", i, n);
 
-		Sanatci sanatci1 = new Sanatci("Hayko Cepkin");
-		Sanatci sanatci2 = new Sanatci("Alan Walker");
-		Sanatci sanatci3 = new Sanatci("Kendrick Lamar");
+		Artist artist1 = new Artist("Hayko Cepkin");
+		Artist artist2 = new Artist("Alan Walker");
+		Artist artist3 = new Artist("Kendrick Lamar");
 
-		Sarki sarki1 = new Sarki("Yalnız Kalsın");
-		Sarki sarki2 = new Sarki("Siren");
-		Sarki sarki3 = new Sarki("Son Kez");
-		Sarki sarki4 = new Sarki("Alone");
-		Sarki sarki5 = new Sarki("Diamond");
-		Sarki sarki6 = new Sarki("Humble");
-		Sarki sarki7 = new Sarki("DNA");
-		Sarki sarki8 = new Sarki("M.A.A.D. City");
-		Sarki sarki9 = new Sarki("Money Trees");
+		Song song1 = new Song("Yalnız Kalsın");
+		Song song2 = new Song("Siren");
+		Song song3 = new Song("Son Kez");
+		Song song4 = new Song("Alone");
+		Song song5 = new Song("Diamond");
+		Song song6 = new Song("Humble");
+		Song song7 = new Song("DNA");
+		Song song8 = new Song("M.A.A.D. City");
+		Song song9 = new Song("Money Trees");
 
-		Album album1 = new Album("Tanışma Bitti", sanatci1);
-		Album album2 = new Album("Walkerverse", sanatci2);
-		Album album3 = new Album("Good Kid", sanatci3);
+		Album album1 = new Album("Tanışma Bitti", artist1);
+		Album album2 = new Album("Walkerverse", artist2);
+		Album album3 = new Album("Good Kid", artist3);
 
-		Playlist c_listesik1_1 = new Playlist("Rap Listesi", kullanici1);
-		Playlist c_listesik1_2 = new Playlist("Türkçe Rock", kullanici1);
-		Playlist c_listesik1_3 = new Playlist("Elektro", kullanici1);
-		Playlist c_listesik2_1 = new Playlist("Rap ve Rock", kullanici2);
-		Playlist c_listesik2_2 = new Playlist("Rock ve Elektro", kullanici2);
-		Playlist c_listesik2_3 = new Playlist("Elektro ve Rap", kullanici2);
+		Playlist p_listk1_1 = new Playlist("Rap List", user1);
+		Playlist p_listk1_2 = new Playlist("Turkish Rock", user1);
+		Playlist p_listk1_3 = new Playlist("Electro", user1);
+		Playlist p_listk2_1 = new Playlist("Rap and Rock", user2);
+		Playlist p_listk2_2 = new Playlist("Rock and Electro", user2);
+		Playlist p_listk2_3 = new Playlist("Electro and Rap", user2);
 
-		sanatci1.sarkiEkle(sarki1, i);
-		sanatci1.sarkiEkle(sarki2, i);
-		sanatci1.sarkiEkle(sarki3, i);
+		artist1.songAdd(song1, i);
+		artist1.songAdd(song2, i);
+		artist1.songAdd(song3, i);
 
-		sanatci2.sarkiEkle(sarki4, i);
-		sanatci2.sarkiEkle(sarki5, i);
+		artist2.songAdd(song4, i);
+		artist2.songAdd(song5, i);
 
-		sanatci3.sarkiEkle(sarki6, i);
-		sanatci3.sarkiEkle(sarki7, i);
-		sanatci3.sarkiEkle(sarki8, i);
-		sanatci3.sarkiEkle(sarki9, i);
+		artist3.songAdd(song6, i);
+		artist3.songAdd(song7, i);
+		artist3.songAdd(song8, i);
+		artist3.songAdd(song9, i);
 
-		album1.sarkiEkle(sarki1, i);
-		album1.sarkiEkle(sarki2, i);
+		album1.songAdd(song1, i);
+		album1.songAdd(song2, i);
 
-		album2.sarkiEkle(sarki5, i);
-		album2.sarkiEkle(sarki4, i);
+		album2.songAdd(song5, i);
+		album2.songAdd(song4, i);
 
-		album3.sarkiEkle(sarki7, i);
-		album3.sarkiEkle(sarki8, i);
-		album3.sarkiEkle(sarki9, i);
+		album3.songAdd(song7, i);
+		album3.songAdd(song8, i);
+		album3.songAdd(song9, i);
 
-		kullanici1.sarkiEkle(c_listesik1_1, sarki9, i);
-		kullanici1.sarkiEkle(c_listesik1_1, sarki8, i);
-		kullanici1.sarkiEkle(c_listesik1_2, sarki1, i);
-		kullanici1.sarkiEkle(c_listesik1_2, sarki2, i);
-		kullanici1.sarkiEkle(c_listesik1_2, sarki3, i);
-		kullanici1.sarkiEkle(c_listesik1_3, sarki4, i);
-		kullanici1.sarkiEkle(c_listesik1_3, sarki5, i);
+		user1.songAdd(p_listk1_1, song9, i);
+		user1.songAdd(p_listk1_1, song8, i);
+		user1.songAdd(p_listk1_2, song1, i);
+		user1.songAdd(p_listk1_2, song2, i);
+		user1.songAdd(p_listk1_2, song3, i);
+		user1.songAdd(p_listk1_3, song4, i);
+		user1.songAdd(p_listk1_3, song5, i);
 
-		kullanici2.sarkiEkle(c_listesik2_1, sarki6, i);
-		kullanici2.sarkiEkle(c_listesik2_2, sarki5, i);
-		kullanici2.sarkiEkle(c_listesik2_3, sarki6, i);
+		user2.songAdd(p_listk2_1, song6, i);
+		user2.songAdd(p_listk2_2, song5, i);
+		user2.songAdd(p_listk2_3, song6, i);
 
-		kullanici1.sarkiDinle(sarki8);
-		kullanici1.sarkiDinle(sarki9);
-		kullanici1.sarkiDinle(sarki8);
-		kullanici1.sarkiDinle(sarki1);
+		user1.listentoMusic(song8);
+		user1.listentoMusic(song9);
+		user1.listentoMusic(song8);
+		user1.listentoMusic(song1);
 
-		kullanici2.sarkiDinle(sarki6);
-		kullanici2.sarkiDinle(sarki6);
-		kullanici2.sarkiDinle(sarki5);
-		kullanici2.sarkiDinle(sarki5);
-		kullanici2.sarkiDinle(sarki5);
+		user2.listentoMusic(song6);
+		user2.listentoMusic(song6);
+		user2.listentoMusic(song5);
+		user2.listentoMusic(song5);
+		user2.listentoMusic(song5);
 
-		kullanici1.calma_lTakipEt(c_listesik2_3);
-		kullanici2.calma_lTakipEt(c_listesik1_1);
-		kullanici2.calma_lTakipEt(c_listesik2_3);
+		user1.play_lFollow(p_listk2_3);
+		user2.play_lFollow(p_listk1_1);
+		user2.play_lFollow(p_listk2_3);
 
-		kullanici1.sarkiBegen(sarki1);
-		kullanici1.sarkiBegen(sarki5);
-		kullanici2.sarkiBegen(sarki2);
-		kullanici2.sarkiBegen(sarki5);
-		kullanici2.sarkiBegen(sarki7);
-		kullanici1.sarkiBegen(sarki7);
-		kullanici2.sarkiBegen(sarki8);
+		user1.songLike(song1);
+		user1.songLike(song5);
+		user2.songLike(song2);
+		user2.songLike(song5);
+		user2.songLike(song7);
+		user1.songLike(song7);
+		user2.songLike(song8);
 
-		kullanici1.sanatcitakipEt(sanatci1);
-		kullanici2.sanatcitakipEt(sanatci1);
-		kullanici2.sanatcitakipEt(sanatci2);
+		user1.artistFollow(artist1);
+		user2.artistFollow(artist1);
+		user2.artistFollow(artist2);
 
 		// 1. İşlem
 		/*
-		 * sanatci1.sanatciBilgileri(); sanatci2.sanatciBilgileri();
-		 * sanatci3.sanatciBilgileri();
-		 * System.out.print("Aradığınız sanatçının adını giriniz: "); String
-		 * ad=arama.nextLine(); i.sanatciAramasi(ad);
+		 * artist1.artistInformation(); artist2.artistInformation();
+		 * artist3.artistInformation();
+		 * System.out.print("Enter the name of the artist you are looking for:"); String
+		 * name = search.nextLine(); i.artistSearch(name);
 		 */
 
 		// 2. İşlem
 		/*
-		 * sarki1.sarkiBilgisi(); sarki2.sarkiBilgisi(); sarki3.sarkiBilgisi();
-		 * sarki4.sarkiBilgisi(); sarki5.sarkiBilgisi(); sarki6.sarkiBilgisi();
-		 * sarki7.sarkiBilgisi(); sarki8.sarkiBilgisi(); sarki9.sarkiBilgisi();
-		 * System.out.print("Aradığınız şarkının adını giriniz: "); String
-		 * ad=arama.nextLine(); i.sarkiAramasi(ad);
+		 * song1.songInformation(); song2.songInformation(); song3.songInformation();
+		 * song4.songInformation(); song5.songInformation(); song6.songInformation();
+		 * song7.songInformation(); song8.songInformation(); song9.songInformation();
+		 * System.out.print("Enter the name of the song you are looking for: "); String
+		 * name = search.nextLine(); i.songSearch(name);
 		 */
-
 		// 3. İşlem
 		/*
-		 * album1.albumBilgisi(); album2.albumBilgisi(); album3.albumBilgisi();
-		 * System.out.print("Aradığınız albümün adını giriniz: "); String
-		 * ad=arama.nextLine(); i.albumAramasi(ad);
+		 * album1.albumInformation(); album2.albumInformation();
+		 * album3.albumInformation();
+		 * System.out.print("Enter the name of the album you are looking for:"); String
+		 * name = search.nextLine(); i.albumSearch(name);
 		 */
-
 		// 4. İşlem
 		/*
-		 * kullanici1.liste(); kullanici2.liste();
-		 * System.out.print("Aradığınız kullanıcının adını giriniz: "); String
-		 * ad=arama.nextLine(); i.kullaniciAramasi(ad);
+		 * user1.liste(); user2.liste();
+		 * System.out.print("Enter the name of the user you are looking for: "); String
+		 * name = search.nextLine(); i.userSearch(name);
 		 */
-
 		// 5. İşlem
 		/*
-		 * c_listesik1_1.calmalistesiBilgileri(); c_listesik1_2.calmalistesiBilgileri();
-		 * c_listesik1_3.calmalistesiBilgileri(); c_listesik2_1.calmalistesiBilgileri();
-		 * c_listesik2_2.calmalistesiBilgileri(); c_listesik2_3.calmalistesiBilgileri();
-		 * System.out.print("Aradığınız çalma listesinin adını giriniz: "); String
-		 * ad=arama.nextLine(); i.calmalistesiAramasi(ad);
+		 * p_listk1_1.playlistInformation(); p_listk1_2.playlistInformation();
+		 * p_listk1_3.playlistInformation(); p_listk2_1.playlistInformation();
+		 * p_listk2_2.playlistInformation(); p_listk2_3.playlistInformation();
+		 * System.out.print("Enter the name of the playlist you are looking for:");
+		 * String name = search.nextLine(); i.playlistSearch(name);
 		 */
-
 		// 6. İşlem
-		// i.maxCalmaTakipci();
+		// i.maxPlayFollower();
 
 		// 7. İşlem
-		// i.maxSanatciTakipci();
+		// i.maxArtistFollower();
 
 		// 8. İşlem
-		// i.minMaxSarkiBegeni();
+		// i.minMaxSongLike();
 
 		// 9. İşlem
-		// i.minMaxAlbumSarkiList();
+		// i.minMaxAlbumSongList();
 
 		// 10. İşlem
-		// i.stringAramasi('h', "cep", 'n');
+		// i.stringSearch('h', "cep", 'n');
 
 		// 11. İşlem
 		// i. adim
 		/*
-		 * kullanici1.liste(); kullanici1.sarkiSil(c_listesik2_1, sarki9, i);
-		 * kullanici1.liste(); kullanici1.sarkiSil(c_listesik1_1, sarki8, i);
-		 * kullanici1.liste(); System.out.println(""); kullanici2.liste();
-		 * kullanici2.sarkiSil(c_listesik1_1, sarki6,i); kullanici2.liste();
-		 * kullanici2.sarkiSil(c_listesik2_2, sarki5,i); kullanici2.liste();
+		 * user1.liste(); user1.songDelete(p_listk2_1, song9, i); user1.liste();
+		 * user1.songDelete(p_listk1_1, song8, i); user1.liste();
+		 * System.out.println(""); user2.liste(); user2.songDelete(p_listk1_1, song6,
+		 * i); user2.liste(); user2.songDelete(p_listk2_2, song5, i); user2.liste();
 		 */
-
 		// ii. adim
 		/*
-		 * kullanici1.liste(); kullanici1.sarkiEkle(c_listesik2_1, sarki9, i);
-		 * kullanici1.liste(); kullanici1.sarkiEkle(c_listesik1_1, sarki7, i);
-		 * kullanici1.liste(); System.out.println(""); kullanici2.liste();
-		 * kullanici2.sarkiEkle(c_listesik1_1, sarki6,i); kullanici2.liste();
-		 * kullanici2.sarkiEkle(c_listesik2_3, sarki4,i); kullanici2.liste();
+		 * user1.liste(); user1.songAdd(p_listk2_1, song9, i); user1.liste();
+		 * user1.songAdd(p_listk1_1, song7, i);
+		 * 
+		 * user1.liste(); System.out.println(""); user2.liste();
+		 * user2.songAdd(p_listk1_1, song6, i); user2.liste(); user2.songAdd(p_listk2_3,
+		 * song4, i); user2.liste();
 		 */
-
 		// 12. İşlem
 		/*
-		 * kullanici1.liste(); kullanici1.sarkiEkle(c_listesik1_3, sarki7, i);
-		 * kullanici1.liste(); kullanici1.sarkiEkle(c_listesik1_3, sarki5, i);
-		 * kullanici1.sarkiEkle(c_listesik1_3, sarki3, i); kullanici1.liste();
-		 * kullanici2.liste(); kullanici2.sarkiEkle(c_listesik2_3, sarki4, i);
-		 * kullanici2.liste(); kullanici2.sarkiEkle(c_listesik2_3, sarki6, i);
-		 * kullanici2.sarkiEkle(c_listesik2_3, sarki7, i); kullanici2.liste();
+		 * user1.liste(); user1.songAdd(p_listk1_3, song7, i); user1.liste();
+		 * user1.songAdd(p_listk1_3, song5, i); user1.songAdd(p_listk1_3, song3, i);
+		 * user1.liste(); user2.liste(); user2.songAdd(p_listk2_3, song4, i);
+		 * user2.liste(); user2.songAdd(p_listk2_3, song6, i); user2.songAdd(p_listk2_3,
+		 * song7, i); user2.liste();
 		 */
-
 		// 13. İşlem
 		/*
-		 * album3.albumBilgisi(); kullanici1.albumBegen(album3);
-		 * kullanici1.albumTakip(album3); album3.albumBilgisi();
-		 * kullanici1.albumBegen(album2); c_listesik2_1.calmalistesiBilgileri();
-		 * kullanici1.calma_lTakipEt(c_listesik2_1);
-		 * c_listesik2_1.calmalistesiBilgileri(); sanatci3.sanatciBilgileri();
-		 * kullanici2.sanatcitakipEt(sanatci3); sanatci3.sanatciBilgileri();
-		 * c_listesik1_3.calmalistesiBilgileri();
-		 * kullanici2.calma_lTakipEt(c_listesik1_3);
-		 * c_listesik1_3.calmalistesiBilgileri();
+		 * album3.albumInformation(); user1.albumLike(album3);
+		 * user1.albumFollow(album3); album3.albumInformation();
+		 * user1.albumLike(album2); p_listk2_1.playlistInformation();
+		 * user1.play_lFollow(p_listk2_1); p_listk2_1.playlistInformation();
+		 * artist3.artistInformation(); user2.artistFollow(artist3);
+		 * artist3.artistInformation(); p_listk1_3.playlistInformation();
+		 * user2.play_lFollow(p_listk1_3); p_listk1_3.playlistInformation();
 		 */
-
 	}
 
 }

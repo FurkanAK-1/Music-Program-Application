@@ -5,23 +5,23 @@
 
 package music_program_application;
 
-public class Album extends Sarki {
+public class Album extends Song {
 
-	private String ad;
-	private int takipci_sayisi;
-	private int begeni_sayisi;
-	private Sarki[] sarkilistesi;
-	private Sanatci sanatci;
-	private int[] sarkibegenilist;
-	private Kullanici[] takiplist;
+	private String name;
+	private int follower_number;
+	private int like_count;
+	private Song[] songlist;
+	private Artist artist;
+	private int[] songlikerlist;
+	private User[] followlist;
 
-	public Album(String ad, Sanatci a_sanatci) {
-		this.ad = ad;
-		sanatci = a_sanatci;
-		sanatci.albumSayisi();
-		sarkilistesi = new Sarki[100];
-		sarkibegenilist = new int[100];
-		takiplist = new Kullanici[100];
+	public Album(String ad, Artist a_artist) {
+		this.name = ad;
+		artist = a_artist;
+		artist.albumNumber();
+		songlist = new Song[100];
+		songlikerlist = new int[100];
+		followlist = new User[100];
 
 	}
 
@@ -30,79 +30,79 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public String getAd() {
-		return ad;
+	public String getName() {
+		return name;
 	}
 
 	@Override
-	public void setAd(String ad) {
-		this.ad = ad;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getTakipci_sayisi() {
-		return takipci_sayisi;
+	public int getFollower_number() {
+		return follower_number;
 	}
 
-	public void setTakipci_sayisi(int takipci_sayisi) {
-		this.takipci_sayisi = takipci_sayisi;
-	}
-
-	@Override
-	public int getBegeni_sayisi() {
-		return begeni_sayisi;
+	public void setFollower_number(int follower_number) {
+		this.follower_number = follower_number;
 	}
 
 	@Override
-	public void setBegeni_sayisi(int begeni_sayisi) {
-		this.begeni_sayisi = begeni_sayisi;
+	public int getLike_count() {
+		return like_count;
 	}
 
 	@Override
-	public Sarki[] getSarkilistesi() {
-		return sarkilistesi;
+	public void setLike_count(int like_count) {
+		this.like_count = like_count;
 	}
 
 	@Override
-	public void setSarkilistesi(Sarki[] sarkilistesi) {
-		this.sarkilistesi = sarkilistesi;
+	public Song[] getSongList() {
+		return songlist;
 	}
 
-	public Sanatci getSanatci() {
-		return sanatci;
+	@Override
+	public void setSongList(Song[] songlist) {
+		this.songlist = songlist;
 	}
 
-	public void setSanatci(Sanatci sanatci) {
-		this.sanatci = sanatci;
+	public Artist getArtist() {
+		return artist;
 	}
 
-	public int[] getSarkibegenilist() {
-		return sarkibegenilist;
+	public void setArtist(Artist artist) {
+		this.artist = artist;
 	}
 
-	public void setSarkibegenilist(int[] sarkibegenilist) {
-		this.sarkibegenilist = sarkibegenilist;
+	public int[] getSongLikerList() {
+		return songlikerlist;
 	}
 
-	public Kullanici[] getTakiplist() {
-		return takiplist;
+	public void setSongLikerList(int[] songlikerlist) {
+		this.songlikerlist = songlikerlist;
 	}
 
-	public void setTakiplist(Kullanici[] takiplist) {
-		this.takiplist = takiplist;
+	public User[] getFollowList() {
+		return followlist;
 	}
 
-	public boolean albumsil(Sanatci sanatci) {
-		if (sanatci == this.sanatci) {
-			for (int i = 0; i < sarkilistesi.length; i++) {
+	public void setFollowList(User[] followlist) {
+		this.followlist = followlist;
+	}
 
-				if (sarkilistesi[i] != null) {
+	public boolean albumdelete(Artist artist) {
+		if (artist == this.artist) {
+			for (int i = 0; i < songlist.length; i++) {
 
-					sarkilistesi[i] = null;
-					this.ad = null;
-					this.takipci_sayisi = 0;
-					this.begeni_sayisi = 0;
-					this.sanatci = null;
-					sarkibegenilist[i] = 0;
+				if (songlist[i] != null) {
+
+					songlist[i] = null;
+					this.name = null;
+					this.follower_number = 0;
+					this.like_count = 0;
+					this.artist = null;
+					songlikerlist[i] = 0;
 					return true;
 				}
 
@@ -113,19 +113,19 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public void sarkiEkle(Sarki sarki, Statistics istatistik) {
+	public void songAdd(Song song, Statistics statistics) {
 
 		boolean is_added = false;
-		boolean albumsarki_farklimi = farkliMi(sarki);
-		boolean albumsanatci_farklimi = sarki.sanatciKontrol(this.sanatci);
-		boolean istatistik_ekle = istatistik.albumEkle(this);
-		boolean albumesarki_ekle = sarki.albumEkle(this);
+		boolean albumsong_difference = isitDifferent(song);
+		boolean albumartist_difference = song.artistControl(this.artist);
+		boolean add_statistics = statistics.addAlbum(this);
+		boolean add_album_song = song.addAlbum(this);
 
-		if (albumesarki_ekle && albumsanatci_farklimi) {
-			for (int i = 0; i < sarkilistesi.length; i++) {
+		if (add_album_song && albumartist_difference) {
+			for (int i = 0; i < songlist.length; i++) {
 
-				if (sarkilistesi[i] == null) {
-					sarkilistesi[i] = sarki;
+				if (songlist[i] == null) {
+					songlist[i] = song;
 
 					is_added = true;
 
@@ -135,13 +135,13 @@ public class Album extends Sarki {
 			}
 		}
 		if (!is_added) {
-			if (!albumsanatci_farklimi) {
-				System.out.println("Bu şarkı başkasına aittir");
-			} else if (albumsarki_farklimi) {
-				System.out.println("Zaten eklendi");
+			if (!albumartist_difference) {
+				System.out.println("This song belongs to someone else");
+			} else if (albumsong_difference) {
+				System.out.println("Already added");
 
 			} else {
-				System.out.println("Kapasite doldu");
+				System.out.println("Capacity is full");
 			}
 
 		}
@@ -149,9 +149,9 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public boolean farkliMi(Sarki sn) {
-		for (int i = 0; i < sarkilistesi.length; i++) {
-			if (sarkilistesi[i] == sn) {
+	public boolean isitDifferent(Song sn) {
+		for (int i = 0; i < songlist.length; i++) {
+			if (songlist[i] == sn) {
 				return true;
 			}
 		}
@@ -161,23 +161,23 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public void sarkiSil(Sarki sarki, Statistics istatistik) {
+	public void songDelete(Song song, Statistics statistics) {
 
 		boolean is_added = false;
-		boolean sarki_sil = sarki.albumSil(this);
-		boolean sanatci_kontrol = sarki.sanatciKontrol(this.sanatci);
-		boolean istatistik_sil = istatistik.albumSil(this);
-		int idx = findIndex(sarki);
+		boolean song_delete = song.albumDelete(this);
+		boolean artist_control = song.artistControl(this.artist);
+		boolean statistics_delete = statistics.albumDelete(this);
+		int idx = findIndex(song);
 		if (idx != -1) {
-			sarkilistesi[idx] = null;
+			songlist[idx] = null;
 			is_added = true;
 		}
 
 		if (!is_added) {
-			if (!sanatci_kontrol) {
-				System.out.println("Bu şarkı başkasına aittir");
+			if (!artist_control) {
+				System.out.println("This song belongs to someone else");
 			} else {
-				System.out.println("Zaten silindi");
+				System.out.println("Already deleted");
 
 			}
 
@@ -186,9 +186,9 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public int findIndex(Sarki sarki) {
-		for (int idx = 0; idx < sarkilistesi.length; idx++) {
-			if (sarkilistesi[idx] != null && sarkilistesi[idx].equals(sarki)) {
+	public int findIndex(Song song) {
+		for (int idx = 0; idx < songlist.length; idx++) {
+			if (songlist[idx] != null && songlist[idx].equals(song)) {
 				return idx;
 			}
 
@@ -198,14 +198,14 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public boolean takipEt(Kullanici kullanici) {
+	public boolean follow(User user) {
 		boolean is_added = false;
 
-		if (!farkliMi(kullanici)) {
-			for (int i = 0; i < takiplist.length; i++) {
-				if (takiplist[i] == null) {
-					takipci_sayisi++;
-					takiplist[i] = kullanici;
+		if (!isitDifferent(user)) {
+			for (int i = 0; i < followlist.length; i++) {
+				if (followlist[i] == null) {
+					follower_number++;
+					followlist[i] = user;
 					is_added = true;
 
 					break;
@@ -218,9 +218,9 @@ public class Album extends Sarki {
 	}
 
 	@Override
-	public boolean farkliMi(Kullanici kn) {
-		for (int i = 0; i < takiplist.length; i++) {
-			if (takiplist[i] == kn) {
+	public boolean isitDifferent(User kn) {
+		for (int i = 0; i < followlist.length; i++) {
+			if (followlist[i] == kn) {
 				return true;
 			}
 		}
@@ -229,48 +229,48 @@ public class Album extends Sarki {
 
 	}
 
-	public void albumGuncelle(Sarki silinecek, Sarki guncellenecek, Statistics istatistik) {
+	public void albumUpdate(Song deleted, Song update, Statistics statistics) {
 
 		boolean is_added = false;
 
-		boolean sarki_kontrol = istatistik.farkliMi(guncellenecek);
-		int idx = findIndex(silinecek);
+		boolean song_control = statistics.isitDifferent(update);
+		int idx = findIndex(deleted);
 
-		if (idx != -1 && !sarki_kontrol && !guncellenecek.isAlbumde_mi()) {
-			boolean istatistik_sil = istatistik.albumSil(this);
-			boolean istatistik_ekle = istatistik.albumEkle(this);
-			sarkiSil(silinecek, istatistik);
-			sarkilistesi[idx] = guncellenecek;
+		if (idx != -1 && !song_control && !update.getisinAlbum()) {
+			boolean statistics_delete = statistics.albumDelete(this);
+			boolean add_statistics = statistics.addAlbum(this);
+			songDelete(deleted, statistics);
+			songlist[idx] = update;
 			is_added = true;
 
 		}
 
 		if (!is_added) {
 
-			System.out.println("Bu şarkı başkasına aittir");
+			System.out.println("This song belongs to someone else");
 
 		}
 	}
 
-	public void begeni_sayisi() {
-		begeni_sayisi++;
+	public void like_count() {
+		like_count++;
 	}
 
-	private int[] minMaxSarkiciBegeni() {
+	private int[] minMaxSingerLikes() {
 		int min = Integer.MAX_VALUE;
 		int max = 0;
 		int min_idx = 0;
 		int max_idx = 0;
 
-		for (int i = 0; i < sarkilistesi.length; i++) {
-			if (sarkilistesi[i] != null) {
-				if (sarkilistesi[i].getBegeni_sayisi() > max) {
+		for (int i = 0; i < songlist.length; i++) {
+			if (songlist[i] != null) {
+				if (songlist[i].getLike_count() > max) {
 					max_idx = i;
-					max = sarkilistesi[i].getBegeni_sayisi();
+					max = songlist[i].getLike_count();
 				}
-				if (sarkilistesi[i].getBegeni_sayisi() < min) {
+				if (songlist[i].getLike_count() < min) {
 					min_idx = i;
-					min = sarkilistesi[i].getBegeni_sayisi();
+					min = songlist[i].getLike_count();
 				}
 			}
 		}
@@ -278,34 +278,34 @@ public class Album extends Sarki {
 		return new int[] { max_idx, min_idx };
 	}
 
-	public void minMaxSarkiBegeni() {
+	public void minMaxSongLikes() {
 
-		int[] min_max_followers = minMaxSarkiciBegeni();
+		int[] min_max_followers = minMaxSingerLikes();
 		if (min_max_followers[0] != min_max_followers[1]) {
 
-			System.out.println("Albümdeki en az beğenisi olan şarkı bilgileri:");
+			System.out.println("Information about the least liked song on the album:");
 
-			sarkilistesi[min_max_followers[1]].sarkiBilgisi();
+			songlist[min_max_followers[1]].songInformation();
 
-			System.out.println("Albümdeki en çok beğenisi olan şarkı bilgileri:");
+			System.out.println("Most liked song information on the album:");
 
-			sarkilistesi[min_max_followers[0]].sarkiBilgisi();
+			songlist[min_max_followers[0]].songInformation();
 		} else {
-			System.out.println("Albümdeki şarkılar eşit beğeniye sahip");
-			sarkilistesi[min_max_followers[0]].sarkiBilgisi();
+			System.out.println("The songs in the album have equal popularity");
+			songlist[min_max_followers[0]].songInformation();
 		}
 
 	}
 
-	public void albumBilgisi() {
-		if (this.ad != null) {
+	public void albumInformation() {
+		if (this.name != null) {
 
-			System.out.println(getAd() + " Albümün Sahibi: " + sanatci.getAdSoyad() + " " + " Albümün Beğeni Sayısı: "
-					+ getBegeni_sayisi() + " Albümün Takipçi Sayısı: " + getTakipci_sayisi());
-			System.out.println("Albümdeki Şarkılar: ");
-			for (int i = 0; i < sarkilistesi.length; i++) {
-				if (sarkilistesi[i] != null) {
-					System.out.print(sarkilistesi[i].getAd() + " ");
+			System.out.println(getName() + " Album Owner: " + artist.getNameSurname() + " " + " Album Like Count: "
+					+ getLike_count() + " Album Followers: " + getFollower_number());
+			System.out.println("Songs in the Album: ");
+			for (int i = 0; i < songlist.length; i++) {
+				if (songlist[i] != null) {
+					System.out.print(songlist[i].getName() + " ");
 				}
 			}
 			System.out.println();

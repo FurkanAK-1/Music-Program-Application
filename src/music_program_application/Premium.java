@@ -5,7 +5,7 @@
 
 package music_program_application;
 
-public class Premium extends Uyelik_Turu {
+public class Premium extends MembershipType {
 
 	public Premium() {
 

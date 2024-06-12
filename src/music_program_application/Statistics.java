@@ -7,34 +7,34 @@ package music_program_application;
 
 public class Statistics {
 
-	private Sanatci[] sanatciList;
-	private Sarki[] sarkiList;
+	private Artist[] artistList;
+	private Song[] songList;
 	private Album[] albumList;
-	private Playlist[] calmalistesi;
-	private Kullanici[] kullanicilistesi;
+	private Playlist[] playList;
+	private User[] userList;
 
 	public Statistics() {
-		sanatciList = new Sanatci[100];
-		sarkiList = new Sarki[100];
+		artistList = new Artist[100];
+		songList = new Song[100];
 		albumList = new Album[100];
-		calmalistesi = new Playlist[100];
-		kullanicilistesi = new Kullanici[100];
+		playList = new Playlist[100];
+		userList = new User[100];
 	}
 
-	public Sanatci[] getSanatciList() {
-		return sanatciList;
+	public Artist[] getArtistList() {
+		return artistList;
 	}
 
-	public void setSanatciList(Sanatci[] sanatciList) {
-		this.sanatciList = sanatciList;
+	public void setArtistList(Artist[] artistList) {
+		this.artistList = artistList;
 	}
 
-	public Sarki[] getSarkiList() {
-		return sarkiList;
+	public Song[] getSongList() {
+		return songList;
 	}
 
-	public void setSarkiList(Sarki[] sarkiList) {
-		this.sarkiList = sarkiList;
+	public void setSongList(Song[] songList) {
+		this.songList = songList;
 	}
 
 	public Album[] getAlbumList() {
@@ -45,25 +45,25 @@ public class Statistics {
 		this.albumList = albumList;
 	}
 
-	public Playlist[] getCalmalistesi() {
-		return calmalistesi;
+	public Playlist[] getPlayList() {
+		return playList;
 	}
 
-	public void setCalmalistesi(Playlist[] calmalistesi) {
-		this.calmalistesi = calmalistesi;
+	public void setPlayList(Playlist[] playList) {
+		this.playList = playList;
 	}
 
-	public Kullanici[] getKullanicilistesi() {
-		return kullanicilistesi;
+	public User[] getUserList() {
+		return userList;
 	}
 
-	public void setKullanicilistesi(Kullanici[] kullanicilistesi) {
-		this.kullanicilistesi = kullanicilistesi;
+	public void setUserList(User[] userList) {
+		this.userList = userList;
 	}
 
-	public boolean farkliMi(Sanatci sn) {
-		for (int i = 0; i < sanatciList.length; i++) {
-			if (sanatciList[i] == sn) {
+	public boolean isitDifferent(Artist sn) {
+		for (int i = 0; i < artistList.length; i++) {
+			if (artistList[i] == sn) {
 				return true;
 			}
 		}
@@ -71,13 +71,13 @@ public class Statistics {
 		return false;
 	}
 
-	public boolean sanatciEkle(Sanatci sanatci) {
+	public boolean artistAdd(Artist artist) {
 		boolean is_added = false;
 
-		if (!farkliMi(sanatci)) {
-			for (int i = 0; i < sanatciList.length; i++) {
-				if (sanatciList[i] == null) {
-					sanatciList[i] = sanatci;
+		if (!isitDifferent(artist)) {
+			for (int i = 0; i < artistList.length; i++) {
+				if (artistList[i] == null) {
+					artistList[i] = artist;
 					is_added = true;
 					break;
 				}
@@ -87,13 +87,13 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean kullaniciEkle(Kullanici kullanici) {
+	public boolean add_user(User user) {
 		boolean is_added = false;
 
-		if (!farkliMi(kullanici)) {
-			for (int i = 0; i < calmalistesi.length; i++) {
-				if (kullanicilistesi[i] == null) {
-					kullanicilistesi[i] = kullanici;
+		if (!isitDifferent(user)) {
+			for (int i = 0; i < playList.length; i++) {
+				if (userList[i] == null) {
+					userList[i] = user;
 					is_added = true;
 					break;
 				}
@@ -103,9 +103,9 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean farkliMi(Kullanici kn) {
-		for (int i = 0; i < kullanicilistesi.length; i++) {
-			if (kullanicilistesi[i] == kn) {
+	public boolean isitDifferent(User kn) {
+		for (int i = 0; i < userList.length; i++) {
+			if (userList[i] == kn) {
 				return true;
 			}
 		}
@@ -113,13 +113,13 @@ public class Statistics {
 		return false;
 	}
 
-	public boolean calmalistEkle(Playlist calmalist) {
+	public boolean addPlaylist(Playlist playlist) {
 		boolean is_added = false;
 
-		if (!farkliMi(calmalist)) {
-			for (int i = 0; i < calmalistesi.length; i++) {
-				if (calmalistesi[i] == null) {
-					calmalistesi[i] = calmalist;
+		if (!isitDifferent(playlist)) {
+			for (int i = 0; i < playList.length; i++) {
+				if (playList[i] == null) {
+					playList[i] = playlist;
 					is_added = true;
 					break;
 				}
@@ -129,9 +129,9 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean farkliMi(Playlist cl) {
-		for (int i = 0; i < sanatciList.length; i++) {
-			if (calmalistesi[i] == cl) {
+	public boolean isitDifferent(Playlist cl) {
+		for (int i = 0; i < artistList.length; i++) {
+			if (playList[i] == cl) {
 				return true;
 			}
 		}
@@ -139,13 +139,13 @@ public class Statistics {
 		return false;
 	}
 
-	public boolean sarkiEkle(Sarki sarki) {
+	public boolean songAdd(Song song) {
 		boolean is_added = false;
 
-		if (!farkliMi(sarki)) {
-			for (int i = 0; i < sarkiList.length; i++) {
-				if (sarkiList[i] == null) {
-					sarkiList[i] = sarki;
+		if (!isitDifferent(song)) {
+			for (int i = 0; i < songList.length; i++) {
+				if (songList[i] == null) {
+					songList[i] = song;
 					is_added = true;
 					break;
 				}
@@ -155,9 +155,9 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean farkliMi(Sarki sn) {
-		for (int i = 0; i < sarkiList.length; i++) {
-			if (sarkiList[i] == sn) {
+	public boolean isitDifferent(Song sn) {
+		for (int i = 0; i < songList.length; i++) {
+			if (songList[i] == sn) {
 				return true;
 			}
 		}
@@ -165,10 +165,10 @@ public class Statistics {
 		return false;
 	}
 
-	public boolean albumEkle(Album album) {
+	public boolean addAlbum(Album album) {
 		boolean is_added = false;
 
-		if (!farkliMi(album)) {
+		if (!isitDifferent(album)) {
 			for (int i = 0; i < albumList.length; i++) {
 				if (albumList[i] == null) {
 					albumList[i] = album;
@@ -181,7 +181,7 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean farkliMi(Album ab) {
+	public boolean isitDifferent(Album ab) {
 		for (int i = 0; i < albumList.length; i++) {
 			if (albumList[i] == ab) {
 				return true;
@@ -191,14 +191,14 @@ public class Statistics {
 		return false;
 	}
 
-	public boolean sanatciSil(Sanatci sanatci) {
+	public boolean artistDelete(Artist artist) {
 
 		boolean is_added = false;
 
-		if (farkliMi(sanatci)) {
-			for (int i = 0; i < sanatciList.length; i++) {
-				if (sanatciList[i] == sanatci) {
-					sanatciList[i] = null;
+		if (isitDifferent(artist)) {
+			for (int i = 0; i < artistList.length; i++) {
+				if (artistList[i] == artist) {
+					artistList[i] = null;
 					is_added = true;
 					break;
 				}
@@ -209,13 +209,13 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean sarkiSil(Sarki sarki) {
+	public boolean songDelete(Song song) {
 		boolean is_added = false;
 
-		if (farkliMi(sarki)) {
-			for (int i = 0; i < sarkiList.length; i++) {
-				if (sarkiList[i] == null) {
-					sarkiList[i] = sarki;
+		if (isitDifferent(song)) {
+			for (int i = 0; i < songList.length; i++) {
+				if (songList[i] == null) {
+					songList[i] = song;
 					is_added = true;
 					break;
 				}
@@ -225,10 +225,10 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean albumSil(Album album) {
+	public boolean albumDelete(Album album) {
 		boolean is_added = false;
 
-		if (farkliMi(album)) {
+		if (isitDifferent(album)) {
 			for (int i = 0; i < albumList.length; i++) {
 				if (albumList[i] == null) {
 					albumList[i] = album;
@@ -241,13 +241,13 @@ public class Statistics {
 		return is_added;
 	}
 
-	public boolean calmalistSil(Playlist calmalist) {
+	public boolean playlistDelete(Playlist playlist) {
 		boolean is_added = false;
 
-		if (farkliMi(calmalist)) {
-			for (int i = 0; i < calmalistesi.length; i++) {
-				if (calmalistesi[i] == null) {
-					calmalistesi[i] = calmalist;
+		if (isitDifferent(playlist)) {
+			for (int i = 0; i < playList.length; i++) {
+				if (playList[i] == null) {
+					playList[i] = playlist;
 					is_added = true;
 					break;
 				}
@@ -257,21 +257,21 @@ public class Statistics {
 		return is_added;
 	}
 
-	private int[] minMaxSarkiciBegeni() {
+	private int[] minMaxSingerLike() {
 		int min = Integer.MAX_VALUE;
 		int max = 0;
 		int min_idx = 0;
 		int max_idx = 0;
 
-		for (int i = 0; i < sarkiList.length; i++) {
-			if (sarkiList[i] != null) {
-				if (sarkiList[i].getBegeni_sayisi() > max) {
+		for (int i = 0; i < songList.length; i++) {
+			if (songList[i] != null) {
+				if (songList[i].getLike_count() > max) {
 					max_idx = i;
-					max = sarkiList[i].getBegeni_sayisi();
+					max = songList[i].getLike_count();
 				}
-				if (sarkiList[i].getBegeni_sayisi() < min) {
+				if (songList[i].getLike_count() < min) {
 					min_idx = i;
-					min = sarkiList[i].getBegeni_sayisi();
+					min = songList[i].getLike_count();
 				}
 			}
 		}
@@ -279,21 +279,21 @@ public class Statistics {
 		return new int[] { max_idx, min_idx };
 	}
 
-	private int[] MaxSanatciTakip() {
+	private int[] maxArtistFollow() {
 		int min = Integer.MAX_VALUE;
 		int max = 0;
 		int min_idx = 0;
 		int max_idx = 0;
 
-		for (int i = 0; i < sanatciList.length; i++) {
-			if (sanatciList[i] != null) {
-				if (sanatciList[i].getTakipciSayisi() > max) {
+		for (int i = 0; i < artistList.length; i++) {
+			if (artistList[i] != null) {
+				if (artistList[i].getFollowerCount() > max) {
 					max_idx = i;
-					max = sanatciList[i].getTakipciSayisi();
+					max = artistList[i].getFollowerCount();
 				}
-				if (sanatciList[i].getTakipciSayisi() < min) {
+				if (artistList[i].getFollowerCount() < min) {
 					min_idx = i;
-					min = sanatciList[i].getTakipciSayisi();
+					min = artistList[i].getFollowerCount();
 				}
 			}
 		}
@@ -301,21 +301,21 @@ public class Statistics {
 		return new int[] { max_idx, min_idx };
 	}
 
-	private int[] maxCalmaTakip() {
+	private int[] maxPlayFollow() {
 		int min = Integer.MAX_VALUE;
 		int max = 0;
 		int min_idx = 0;
 		int max_idx = 0;
 
-		for (int i = 0; i < calmalistesi.length; i++) {
-			if (calmalistesi[i] != null) {
-				if (calmalistesi[i].getTakipciSayisi() > max) {
+		for (int i = 0; i < playList.length; i++) {
+			if (playList[i] != null) {
+				if (playList[i].getFollowerCount() > max) {
 					max_idx = i;
-					max = calmalistesi[i].getTakipciSayisi();
+					max = playList[i].getFollowerCount();
 				}
-				if (calmalistesi[i].getTakipciSayisi() < min) {
+				if (playList[i].getFollowerCount() < min) {
 					min_idx = i;
-					min = calmalistesi[i].getTakipciSayisi();
+					min = playList[i].getFollowerCount();
 				}
 			}
 		}
@@ -323,165 +323,165 @@ public class Statistics {
 		return new int[] { max_idx, min_idx };
 	}
 
-	public void maxSanatciTakipci() {
+	public void maxArtistFollower() {
 
-		int[] min_max_followers = MaxSanatciTakip();
+		int[] min_max_followers = maxArtistFollow();
 
-		System.out.println("En çok takipçisi olan sanatçı bilgileri:");
+		System.out.println("Most followed artist information:");
 
-		sanatciList[min_max_followers[0]].sanatciBilgileri();
+		artistList[min_max_followers[0]].artistInformation();
 	}
 
-	public void maxCalmaTakipci() {
+	public void maxPlayFollower() {
 
-		int[] min_max_followers = maxCalmaTakip();
+		int[] min_max_followers = maxPlayFollow();
 
-		System.out.println("En çok takipçisi olan çalma listesi bilgileri:");
+		System.out.println("Most followed playlist information:");
 
-		calmalistesi[min_max_followers[0]].calmalistesiBilgileri();
+		playList[min_max_followers[0]].playlistInformation();
 	}
 
-	public void minMaxSarkiBegeni() {
+	public void minMaxSongLike() {
 
-		System.out.println("En az beğenisi olan şarkı bilgileri:");
+		System.out.println("Information about the song with the least likes:");
 
-		int[] min_max_followers = minMaxSarkiciBegeni();
+		int[] min_max_followers = minMaxSingerLike();
 
-		sarkiList[min_max_followers[1]].sarkiBilgisi();
+		songList[min_max_followers[1]].songInformation();
 
-		System.out.println("En çok beğenisi olan şarkı bilgileri:");
+		System.out.println("Most liked song information:");
 
-		sarkiList[min_max_followers[0]].sarkiBilgisi();
+		songList[min_max_followers[0]].songInformation();
 
 	}
 
-	public void minMaxAlbumSarkiList() {
+	public void minMaxAlbumSongList() {
 		for (int i = 0; i < albumList.length; i++) {
 			if (albumList[i] != null) {
-				albumList[i].minMaxSarkiBegeni();
+				albumList[i].minMaxSongLikes();
 			}
 
 		}
 
 	}
 
-	public void stringAramasi(char b_harf, String iceren, char s_harf) {
+	public void stringSearch(char start_letter, String including, char last_letter) {
 		int count = 0;
-		for (int i = 0; i < sanatciList.length; i++) {
-			if (sanatciList[i] != null) {
-				String a = sanatciList[i].getAdSoyad().toLowerCase();
+		for (int i = 0; i < artistList.length; i++) {
+			if (artistList[i] != null) {
+				String a = artistList[i].getNameSurname().toLowerCase();
 				a = a.replace(" ", "");
 
-				if (a.charAt(0) == b_harf && a.charAt(a.length() - 1) == s_harf && a.contains(iceren)) {
+				if (a.charAt(0) == start_letter && a.charAt(a.length() - 1) == last_letter && a.contains(including)) {
 					count++;
-					sanatciList[i].sanatciBilgileri();
+					artistList[i].artistInformation();
 
 				}
 
 			}
 		}
 		if (count == 0) {
-			System.out.println("Verdiğiniz bilgileri içeren sanatçı bulunamadı");
+			System.out.println("No artist found with the information you provided.");
 		}
 
 	}
 
-	public void sanatciAramasi(String iceren) {
+	public void artistSearch(String including) {
 		int count = 0;
-		for (int i = 0; i < sanatciList.length; i++) {
-			if (sanatciList[i] != null) {
-				String a = sanatciList[i].getAdSoyad().toLowerCase();
+		for (int i = 0; i < artistList.length; i++) {
+			if (artistList[i] != null) {
+				String a = artistList[i].getNameSurname().toLowerCase();
 
-				if (a.equals(iceren)) {
+				if (a.equals(including)) {
 					count++;
-					sanatciList[i].sanatciBilgileri();
+					artistList[i].artistInformation();
 
 				}
 
 			}
 		}
 		if (count == 0) {
-			System.out.println("Verdiğiniz bilgileri içeren sanatçı bulunamadı");
+			System.out.println("No artist found with the information you provided.");
 		}
 
 	}
 
-	public void sarkiAramasi(String iceren) {
+	public void songSearch(String including) {
 		int count = 0;
-		for (int i = 0; i < sarkiList.length; i++) {
-			if (sarkiList[i] != null) {
-				String a = sarkiList[i].getAd().toLowerCase();
+		for (int i = 0; i < songList.length; i++) {
+			if (songList[i] != null) {
+				String a = songList[i].getName().toLowerCase();
 
-				if (a.equals(iceren)) {
+				if (a.equals(including)) {
 					count++;
-					sarkiList[i].sarkiBilgisi();
+					songList[i].songInformation();
 
 				}
 
 			}
 		}
 		if (count == 0) {
-			System.out.println("Verdiğiniz bilgileri içeren şarkı bulunamadı");
+			System.out.println("No songs were found containing the information you provided.");
 		}
 
 	}
 
-	public void albumAramasi(String iceren) {
+	public void albumSearch(String including) {
 		int count = 0;
 		for (int i = 0; i < albumList.length; i++) {
 			if (albumList[i] != null) {
-				String a = albumList[i].getAd().toLowerCase();
+				String a = albumList[i].getName().toLowerCase();
 
-				if (a.equals(iceren)) {
+				if (a.equals(including)) {
 					count++;
-					albumList[i].albumBilgisi();
+					albumList[i].albumInformation();
 
 				}
 
 			}
 		}
 		if (count == 0) {
-			System.out.println("Verdiğiniz bilgileri içeren albüm bulunamadı");
+			System.out.println("No albums were found containing the information you provided.");
 		}
 
 	}
 
-	public void kullaniciAramasi(String iceren) {
+	public void userSearch(String including) {
 		int count = 0;
-		for (int i = 0; i < kullanicilistesi.length; i++) {
-			if (kullanicilistesi[i] != null) {
-				String a = kullanicilistesi[i].getAdSoyad().toLowerCase();
+		for (int i = 0; i < userList.length; i++) {
+			if (userList[i] != null) {
+				String a = userList[i].getNameSurname().toLowerCase();
 
-				if (a.equals(iceren)) {
+				if (a.equals(including)) {
 					count++;
-					kullanicilistesi[i].liste();
+					userList[i].liste();
 
 				}
 
 			}
 		}
 		if (count == 0) {
-			System.out.println("Verdiğiniz bilgileri içeren kullanıcı bulunamadı");
+			System.out.println("No user found with the information you provided.");
 		}
 
 	}
 
-	public void calmalistesiAramasi(String iceren) {
+	public void playlistSearch(String including) {
 		int count = 0;
-		for (int i = 0; i < calmalistesi.length; i++) {
-			if (calmalistesi[i] != null) {
-				String a = calmalistesi[i].getAd().toLowerCase();
+		for (int i = 0; i < playList.length; i++) {
+			if (playList[i] != null) {
+				String a = playList[i].getName().toLowerCase();
 
-				if (a.equals(iceren)) {
+				if (a.equals(including)) {
 					count++;
-					calmalistesi[i].calmalistesiBilgileri();
+					playList[i].playlistInformation();
 
 				}
 
 			}
 		}
 		if (count == 0) {
-			System.out.println("Verdiğiniz bilgileri içeren çalma listesi bulunamadı");
+			System.out.println("No playlists were found containing the information you provided.");
 		}
 
 	}

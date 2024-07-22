@@ -16,7 +16,7 @@ public class Test {
 
 		Statistics i = new Statistics();
 
-		User user1 = new User("Furkan AKsssss", i, p);
+		User user1 = new User("Furkan AK", i, p);
 		User user2 = new User("İbrahim Kurban", i, n);
 
 		Artist artist1 = new Artist("Hayko Cepkin");
